@@ -20,8 +20,7 @@ namespace ContactApplication.Model
 
         public Contact()
         {
-            _allContactCount++;
-            _id = _allContactCount;
+            _id = _allContactCount++;
         }
 
         public Contact(string fullName,
