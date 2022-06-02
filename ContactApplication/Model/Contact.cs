@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactApplication.Model
 {
@@ -14,7 +10,7 @@ namespace ContactApplication.Model
 
         private readonly int _id;
 
-        private string _telegram;
+        private string _vk;
 
         private static int _allContactCount;
 
@@ -26,14 +22,14 @@ namespace ContactApplication.Model
         public Contact(string fullName,
                       DateTime dateOfBirth,
                       string number,
-                      string telegram)
+                      string vk)
         {
             FullName = fullName;
             DateOfBirth = dateOfBirth;
             Number = number;
             _allContactCount++;
             _id = _allContactCount;
-            Telegram = telegram;
+            Vk = vk;
         }
 
         public Contact(Contact other)
@@ -41,7 +37,7 @@ namespace ContactApplication.Model
             _id = other._id;
             FullName = other._fullName;
             DateOfBirth = other._dateOfBirth;
-            Telegram = other._telegram;
+            Vk = other._vk;
         }
 
         public int Id
@@ -49,14 +45,6 @@ namespace ContactApplication.Model
             get
             {
                 return _id;
-            }
-        }
-
-        public static int AllContactCount
-        {
-            get
-            {
-                return _allContactCount;
             }
         }
 
@@ -89,6 +77,6 @@ namespace ContactApplication.Model
 
         public string Number { get; set; }
 
-        public string Telegram { get; set; }
+        public string Vk { get; set; }
     }
 }

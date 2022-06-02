@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ListBoxContacts = new System.Windows.Forms.ListBox();
             this.TextBoxName = new System.Windows.Forms.TextBox();
             this.DateTimePickerDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.MaskedTextBoxPhone = new System.Windows.Forms.MaskedTextBox();
-            this.MaskedTextBoxTelegram = new System.Windows.Forms.MaskedTextBox();
             this.GroupBoxSelectedContact = new System.Windows.Forms.GroupBox();
-            this.LabelTelegram = new System.Windows.Forms.Label();
+            this.TextBoxVK = new System.Windows.Forms.TextBox();
+            this.LabelVK = new System.Windows.Forms.Label();
             this.LabelPhone = new System.Windows.Forms.Label();
             this.LabelDateOfBirth = new System.Windows.Forms.Label();
             this.LabelName = new System.Windows.Forms.Label();
@@ -74,39 +75,41 @@
             this.MaskedTextBoxPhone.Name = "MaskedTextBoxPhone";
             this.MaskedTextBoxPhone.Size = new System.Drawing.Size(200, 20);
             this.MaskedTextBoxPhone.TabIndex = 3;
-            // 
-            // MaskedTextBoxTelegram
-            // 
-            this.MaskedTextBoxTelegram.Location = new System.Drawing.Point(81, 145);
-            this.MaskedTextBoxTelegram.Name = "MaskedTextBoxTelegram";
-            this.MaskedTextBoxTelegram.Size = new System.Drawing.Size(200, 20);
-            this.MaskedTextBoxTelegram.TabIndex = 4;
+            this.MaskedTextBoxPhone.TextChanged += new System.EventHandler(this.PhoneMaskedTextBox_TextChanged);
             // 
             // GroupBoxSelectedContact
             // 
-            this.GroupBoxSelectedContact.Controls.Add(this.LabelTelegram);
+            this.GroupBoxSelectedContact.Controls.Add(this.TextBoxVK);
+            this.GroupBoxSelectedContact.Controls.Add(this.LabelVK);
             this.GroupBoxSelectedContact.Controls.Add(this.LabelPhone);
             this.GroupBoxSelectedContact.Controls.Add(this.LabelDateOfBirth);
             this.GroupBoxSelectedContact.Controls.Add(this.LabelName);
             this.GroupBoxSelectedContact.Controls.Add(this.DateTimePickerDateOfBirth);
-            this.GroupBoxSelectedContact.Controls.Add(this.MaskedTextBoxTelegram);
             this.GroupBoxSelectedContact.Controls.Add(this.TextBoxName);
             this.GroupBoxSelectedContact.Controls.Add(this.MaskedTextBoxPhone);
             this.GroupBoxSelectedContact.Location = new System.Drawing.Point(196, 25);
             this.GroupBoxSelectedContact.Name = "GroupBoxSelectedContact";
-            this.GroupBoxSelectedContact.Size = new System.Drawing.Size(514, 200);
+            this.GroupBoxSelectedContact.Size = new System.Drawing.Size(514, 236);
             this.GroupBoxSelectedContact.TabIndex = 5;
             this.GroupBoxSelectedContact.TabStop = false;
             this.GroupBoxSelectedContact.Text = "Selected Contact";
             // 
-            // LabelTelegram
+            // TextBoxVK
             // 
-            this.LabelTelegram.AutoSize = true;
-            this.LabelTelegram.Location = new System.Drawing.Point(21, 148);
-            this.LabelTelegram.Name = "LabelTelegram";
-            this.LabelTelegram.Size = new System.Drawing.Size(54, 13);
-            this.LabelTelegram.TabIndex = 8;
-            this.LabelTelegram.Text = "Telegram:";
+            this.TextBoxVK.Location = new System.Drawing.Point(81, 146);
+            this.TextBoxVK.Name = "TextBoxVK";
+            this.TextBoxVK.Size = new System.Drawing.Size(200, 20);
+            this.TextBoxVK.TabIndex = 9;
+            this.TextBoxVK.TextChanged += new System.EventHandler(this.TextBoxVK_TextChanged);
+            // 
+            // LabelVK
+            // 
+            this.LabelVK.AutoSize = true;
+            this.LabelVK.Location = new System.Drawing.Point(51, 146);
+            this.LabelVK.Name = "LabelVK";
+            this.LabelVK.Size = new System.Drawing.Size(24, 13);
+            this.LabelVK.TabIndex = 8;
+            this.LabelVK.Text = "VK:";
             // 
             // LabelPhone
             // 
@@ -173,8 +176,9 @@
             this.Controls.Add(this.ButtonAdd);
             this.Controls.Add(this.GroupBoxSelectedContact);
             this.Controls.Add(this.ListBoxContacts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "List Of Contacts";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.GroupBoxSelectedContact.ResumeLayout(false);
             this.GroupBoxSelectedContact.PerformLayout();
@@ -188,14 +192,14 @@
         private System.Windows.Forms.TextBox TextBoxName;
         private System.Windows.Forms.DateTimePicker DateTimePickerDateOfBirth;
         private System.Windows.Forms.MaskedTextBox MaskedTextBoxPhone;
-        private System.Windows.Forms.MaskedTextBox MaskedTextBoxTelegram;
         private System.Windows.Forms.GroupBox GroupBoxSelectedContact;
         private System.Windows.Forms.Button ButtonAdd;
         private System.Windows.Forms.Button ButtonDelete;
         private System.Windows.Forms.Label LabelName;
         private System.Windows.Forms.Label LabelDateOfBirth;
-        private System.Windows.Forms.Label LabelTelegram;
+        private System.Windows.Forms.Label LabelVK;
         private System.Windows.Forms.Label LabelPhone;
+        private System.Windows.Forms.TextBox TextBoxVK;
     }
 }
 

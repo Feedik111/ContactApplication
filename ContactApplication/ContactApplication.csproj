@@ -88,14 +88,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Properties\add_contact.png" />
+    <None Include="Resources\icon_64.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\remove_contact_enter_24.png" />
     <None Include="Resources\remove_contact_enter_24_.png" />
     <None Include="Resources\remove_contact_24.png" />
     <None Include="Resources\plus_enter.png" />
     <None Include="Resources\add_contact_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_32.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ContactApplication.Model;
 using ContactApplication.Properties;
@@ -47,7 +42,6 @@ namespace ContactApplication
                 ListBoxContacts.Items.Add(_contacts[i].FullName);
             }
         }
-
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
@@ -138,14 +132,6 @@ namespace ContactApplication
             }
         }
 
-        private void MaskedTextBoxTelegram_TextChanged(object sender, EventArgs e)
-        {
-            if (ListBoxContacts.SelectedIndex != -1)
-            {
-                _contacts[ListBoxContacts.SelectedIndex].Telegram = MaskedTextBoxTelegram.Text;
-            }
-        }
-
         private void ListBoxContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ListBoxContacts.SelectedIndex != -1)
@@ -155,7 +141,7 @@ namespace ContactApplication
                 TextBoxName.Text = _currentContact.FullName;
                 DateTimePickerDateOfBirth.Value = _currentContact.DateOfBirth;
                 MaskedTextBoxPhone.Text = _currentContact.Number;
-                MaskedTextBoxTelegram.Text = _currentContact.Telegram;
+                TextBoxVK.Text = _currentContact.Vk;
 
             }
         }
@@ -185,6 +171,14 @@ namespace ContactApplication
         {
             var filePath = Path.Combine(appDataFolder, "List Of Contacts");
             ProjectSerializer.SaveToFile(_contacts, filePath);
+        }
+
+        private void TextBoxVK_TextChanged(object sender, EventArgs e)
+        {
+            if (ListBoxContacts.SelectedIndex != -1)
+            {
+                _contacts[ListBoxContacts.SelectedIndex].Vk = TextBoxVK.Text;
+            }
         }
     }
 }
