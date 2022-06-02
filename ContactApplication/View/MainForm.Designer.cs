@@ -67,6 +67,7 @@
             this.DateTimePickerDateOfBirth.Name = "DateTimePickerDateOfBirth";
             this.DateTimePickerDateOfBirth.Size = new System.Drawing.Size(200, 20);
             this.DateTimePickerDateOfBirth.TabIndex = 2;
+            this.DateTimePickerDateOfBirth.ValueChanged += new System.EventHandler(this.DateTimePickerDateOfBirth_ValueChanged);
             // 
             // MaskedTextBoxPhone
             // 

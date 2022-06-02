@@ -10,13 +10,30 @@ using Contact = ContactApplication.Model.Contact;
 
 namespace ContactApplication
 {
+    /// <summary>
+    /// Представляет реализацию главного окна программы.
+    /// </summary>
     public partial class MainForm : Form
     {
+
+        /// <summary>
+        /// Хранит путь до папки AppData.
+        /// </summary>
         private string appDataFolder = Environment.GetFolderPath(SpecialFolder.ApplicationData);
 
+        /// <summary>
+        /// Коллекция контактов.
+        /// </summary>
         private List<Contact> _contacts;
 
+        /// <summary>
+        /// Выбранный контакт.
+        /// </summary>
         private Contact _currentContact;
+
+        /// <summary>
+        /// Создаёт экземпляр класса <see cref="MainForm"/>.
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -27,8 +44,13 @@ namespace ContactApplication
             CreateFilesToAppData();
             _contacts = ProjectSerializer.LoadFromFile(appDataFolder + "\\List Of Contacts");
             UpdateContactList(_contacts);
+            if (_contacts.Count >= 1) ListBoxContacts.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Создает экземпляр класса <see cref="UpdateContactList"/>.
+        /// </summary>
+        /// <param name="contacts">Коллекция контактов.</param>
         private void UpdateContactList(List<Contact> contacts)
         {
             ListBoxContacts.Items.Clear();
@@ -40,6 +62,46 @@ namespace ContactApplication
             for (int i = 0; i < _contacts.Count; i++)
             {
                 ListBoxContacts.Items.Add(_contacts[i].FullName);
+            }
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="UpdateContactInfo"/>.
+        /// </summary>
+        private void UpdateContactInfo()
+        {
+            var selectedIndex = ListBoxContacts.SelectedIndex;
+            var contact = new Contact(_currentContact);
+            _contacts[selectedIndex] = contact;
+            UpdateContactList(_contacts);
+
+            var indexOf = _contacts.IndexOf(contact);
+
+            ListBoxContacts.SelectedIndex = indexOf;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса <see cref="CreateFilesToAppData"/>.
+        /// </summary>
+        private static void CreateFilesToAppData()
+        {
+            try
+            {
+                var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                var directory = Path.Combine(appDataPath, "List Of Contacts");
+
+                if (Directory.Exists(directory)) return;
+                Directory.CreateDirectory(directory);
+
+                var filePath = Path.Combine(directory, "contacts.json");
+
+                if (File.Exists(filePath)) return;
+                File.Create(filePath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
 
@@ -61,40 +123,6 @@ namespace ContactApplication
                 ListBoxContacts.SelectedIndex = 0;
             }
 
-        }
-
-        private void UpdateContactInfo()
-        {
-            var selectedIndex = ListBoxContacts.SelectedIndex;
-            var contact = new Contact(_currentContact);
-            _contacts[selectedIndex] = contact;
-            UpdateContactList(_contacts);
-
-            var indexOf = _contacts.IndexOf(contact);
-
-            ListBoxContacts.SelectedIndex = indexOf;
-        }
-
-        private static void CreateFilesToAppData()
-        {
-            try
-            {
-                var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                var directory = Path.Combine(appDataPath, "List Of Contacts");
-
-                if (Directory.Exists(directory)) return;
-                Directory.CreateDirectory(directory);
-
-                var filePath = Path.Combine(directory, "contacts.json");
-
-                if (File.Exists(filePath)) return;
-                File.Create(filePath);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
         }
 
         private void DateTimePickerDateOfBirth_ValueChanged(object sender, EventArgs e)

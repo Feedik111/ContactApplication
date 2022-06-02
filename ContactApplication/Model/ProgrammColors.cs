@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace ContactApplication.Model
 {
+    /// <summary>
+    /// Хранит данные о цветах используемых в приложении.
+    /// </summary>
     internal class ProgrammColors
     {
-        public static Color CorrectColor = Color.White;
+        /// <summary>
+        /// Цвет для корректного значения.
+        /// </summary>
+        public static Color CorrectColor = Color.FloralWhite;
 
-        public static Color ErrorColor = Color.Pink;
+        /// <summary>
+        /// Цвет для некоретного значения.
+        /// </summary>
+        public static Color ErrorColor = Color.LightCoral;
     }
 }
