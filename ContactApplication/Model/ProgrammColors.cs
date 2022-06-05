@@ -10,10 +10,10 @@ namespace ContactApplication.Model
         /// <summary>
         /// Цвет для корректного значения.
         /// </summary>
-        public static Color CorrectColor = Color.FloralWhite;
+        public static Color CorrectColor = Color.White;
 
         /// <summary>
-        /// Цвет для некоретного значения.
+        /// Цвет для некоректного значения.
         /// </summary>
         public static Color ErrorColor = Color.LightCoral;
     }

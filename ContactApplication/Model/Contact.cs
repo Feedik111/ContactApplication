@@ -18,7 +18,7 @@ namespace ContactApplication.Model
         private DateTime _dateOfBirth;
 
         /// <summary>
-        /// Количество песен.
+        /// Количество контактов.
         /// </summary>
         private static int _allContactCount;
 
